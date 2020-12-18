@@ -8,9 +8,6 @@ import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(SchoolingFishEntity.class)
 public abstract class DisableFishSchooling extends FishEntity {
@@ -33,5 +30,14 @@ public abstract class DisableFishSchooling extends FishEntity {
                 this.getNavigation().startMovingTo(this.leader, 1.0D);
             }
         }
+    }
+
+    /**
+     * @reason To disable SchoolingFish schooling.
+     * @author trueKeuin
+     */
+    @Overwrite
+    protected void initGoals() {
+        super.initGoals();
     }
 }
