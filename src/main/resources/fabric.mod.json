@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "ohmyvanillamc",
+  "version": "${version}",
+  "name": "Oh My Vanilla Minecraft",
+  "description": "What's wrong with my Minecraft?",
+  "authors": [
+    "trueKeuin"
+  ],
+  "contact": {
+    "homepage": "https://www.keuin.cc",
+    "sources": "https://github.com/keuin/OhMyVanillaMinecraft"
+  },
+  "license": "MIT",
+  "icon": "assets/ohmyvanillamc/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.keuin.ohmyvanillamc.OhMyVanillaMinecraft"
+    ]
+  },
+  "mixins": [
+    "ohmyvanillamc.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.15.x"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

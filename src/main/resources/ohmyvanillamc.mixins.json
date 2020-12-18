@@ -1,0 +1,12 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.keuin.ohmyvanillamc.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "DisableFishSchooling"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
