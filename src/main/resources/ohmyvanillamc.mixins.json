@@ -4,7 +4,8 @@
   "package": "com.keuin.ohmyvanillamc.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "DisableFishSchooling"
+    "DisableFishSchooling",
+    "DisableWanderingTraderSpawning"
   ],
   "injectors": {
     "defaultRequire": 1
