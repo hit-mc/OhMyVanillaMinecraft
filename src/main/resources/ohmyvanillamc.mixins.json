@@ -4,7 +4,9 @@
   "package": "com.keuin.ohmyvanillamc.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "DisableEntityTrackerEntrySpamming",
     "DisableFishSchooling",
+    "DisablePhantomSpawning",
     "DisableWanderingTraderSpawning"
   ],
   "injectors": {
