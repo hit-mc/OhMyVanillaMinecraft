@@ -37,7 +37,7 @@ public abstract class DisableFishSchooling extends FishEntity {
      * @author trueKeuin
      */
     @Overwrite
-    protected void initGoals() {
+    public void initGoals() {
         super.initGoals();
     }
 }
