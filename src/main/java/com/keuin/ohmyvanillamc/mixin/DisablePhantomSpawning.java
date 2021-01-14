@@ -16,7 +16,7 @@ public class DisablePhantomSpawning {
      */
     @Inject(method = "spawn", at = @At("HEAD"), cancellable = true)
     public void spawn(ServerWorld serverWorld, boolean spawnMonsters, boolean spawnAnimals, CallbackInfoReturnable<Integer> cir) {
-        if (OhMyVanillaMinecraft.disablePhantomSpawning)
+        if (OhMyVanillaMinecraft.getConfiguration().isDisablePhantomSpawning())
             cir.setReturnValue(0);
     }
 }

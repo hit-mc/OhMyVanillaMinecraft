@@ -2,6 +2,7 @@ package com.keuin.ohmyvanillamc.mixin;
 
 import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.FollowGroupLeaderGoal;
 import net.minecraft.entity.passive.FishEntity;
 import net.minecraft.entity.passive.SchoolingFishEntity;
 import net.minecraft.world.World;
@@ -25,7 +26,7 @@ public abstract class DisableFishSchooling extends FishEntity {
      */
     @Overwrite
     public void moveTowardLeader() {
-        if (!OhMyVanillaMinecraft.disableFishSchooling) {
+        if (!OhMyVanillaMinecraft.getConfiguration().isDisableFishSchooling()) {
             if (this.hasLeader()) {
                 this.getNavigation().startMovingTo(this.leader, 1.0D);
             }
@@ -39,5 +40,8 @@ public abstract class DisableFishSchooling extends FishEntity {
     @Overwrite
     public void initGoals() {
         super.initGoals();
+        if (!OhMyVanillaMinecraft.getConfiguration().isDisableFishSchooling()) {
+            this.goalSelector.add(5, new FollowGroupLeaderGoal((SchoolingFishEntity) (Object) this));
+        }
     }
 }
