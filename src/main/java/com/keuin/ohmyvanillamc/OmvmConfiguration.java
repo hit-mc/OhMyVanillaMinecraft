@@ -4,16 +4,30 @@ import java.util.Objects;
 
 public class OmvmConfiguration {
 
+    private final boolean fixEntityTrackerEntrySpamming;
     private final boolean disableFishSchooling;
     private final boolean disablePhantomSpawning;
     private final boolean disableWanderingTraderSpawning;
     private final boolean reintroduceLlamaItemDuplicating;
 
-    public OmvmConfiguration(boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating) {
+    public OmvmConfiguration() {
+        fixEntityTrackerEntrySpamming = true;
+        disableFishSchooling = false;
+        disablePhantomSpawning = false;
+        disableWanderingTraderSpawning = false;
+        reintroduceLlamaItemDuplicating = false;
+    }
+
+    public OmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating) {
+        this.fixEntityTrackerEntrySpamming = fixEntityTrackerEntrySpamming;
         this.disableFishSchooling = disableFishSchooling;
         this.disablePhantomSpawning = disablePhantomSpawning;
         this.disableWanderingTraderSpawning = disableWanderingTraderSpawning;
         this.reintroduceLlamaItemDuplicating = reintroduceLlamaItemDuplicating;
+    }
+
+    public boolean isFixEntityTrackerEntrySpamming() {
+        return fixEntityTrackerEntrySpamming;
     }
 
     public boolean isDisableFishSchooling() {
@@ -37,7 +51,8 @@ public class OmvmConfiguration {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         OmvmConfiguration that = (OmvmConfiguration) o;
-        return disableFishSchooling == that.disableFishSchooling &&
+        return fixEntityTrackerEntrySpamming == that.fixEntityTrackerEntrySpamming &&
+                disableFishSchooling == that.disableFishSchooling &&
                 disablePhantomSpawning == that.disablePhantomSpawning &&
                 disableWanderingTraderSpawning == that.disableWanderingTraderSpawning &&
                 reintroduceLlamaItemDuplicating == that.reintroduceLlamaItemDuplicating;
@@ -45,14 +60,17 @@ public class OmvmConfiguration {
 
     @Override
     public int hashCode() {
-        return Objects.hash(disableFishSchooling, disablePhantomSpawning, disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating);
+        return Objects.hash(fixEntityTrackerEntrySpamming, disableFishSchooling, disablePhantomSpawning, disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating);
     }
 
     @Override
     public String toString() {
-        return "Disable Fish Schooling: " + disableFishSchooling + "\n" +
-                "Disable Phantom Spawning: " + disablePhantomSpawning + "\n" +
-                "Disable Wandering Trader Spawning: " + disableWanderingTraderSpawning + "\n" +
-                "Reintroduce Llama Item Duplicating: " + reintroduceLlamaItemDuplicating;
+        String s = "";
+        s += "(BugFix) Fix Entity Tracker Entry Spamming: " + fixEntityTrackerEntrySpamming + "\n";
+        s += "(Optimization) Disable Fish Schooling: " + disableFishSchooling + "\n";
+        s += "(Exotic Feature) Disable Phantom Spawning: " + disablePhantomSpawning + "\n";
+        s += "(Exotic Feature) Disable Wandering Trader Spawning: " + disableWanderingTraderSpawning + "\n";
+        s += "(Obsolete Vanilla Feature) Reintroduce Llama Item Duplicating: " + reintroduceLlamaItemDuplicating;
+        return s;
     }
 }

@@ -4,10 +4,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
 import net.fabricmc.api.ModInitializer;
-import net.minecraft.server.network.EntityTrackerEntry;
 
 import java.io.*;
-import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
@@ -16,33 +14,10 @@ public class OhMyVanillaMinecraft implements ModInitializer {
 	private static final Logger LOGGER = Logger.getLogger("OhMyVanillaMinecraft");
 
 	private static OmvmConfiguration configuration = null;
-	private static final OmvmConfiguration defaultConfiguration = new OmvmConfiguration(
-			false,
-			false,
-			false,
-			false
-	);
+	private static final OmvmConfiguration defaultConfiguration = new OmvmConfiguration();
 
 	public static OmvmConfiguration getConfiguration() {
 		return configuration != null ? configuration : defaultConfiguration;
-	}
-
-	private static void disableEntityTrackerEntrySpamming() {
-		try {
-			//获取该类的字节码对象
-			Class<EntityTrackerEntry> clazz = EntityTrackerEntry.class;
-
-			//获取其私有成员
-			Field name = clazz.getDeclaredField("LOGGER");
-
-			//暴力反射
-			name.setAccessible(true);
-
-			//重新赋值  参数一：实力  参数二：值
-//			name.set(EntityTrackerEntry, "小鸭鸭");
-		} catch (NoSuchFieldException ignored) {
-			// never mind
-		}
 	}
 
 	@Override
