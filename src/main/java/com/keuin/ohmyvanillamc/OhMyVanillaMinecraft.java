@@ -3,7 +3,15 @@ package com.keuin.ohmyvanillamc;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonIOException;
+import com.mojang.brigadier.Command;
+import com.mojang.brigadier.CommandDispatcher;
+import com.mojang.brigadier.context.CommandContext;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
+import net.minecraft.server.command.CommandManager;
+import net.minecraft.server.command.ServerCommandSource;
+import net.minecraft.text.LiteralText;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
@@ -63,6 +71,20 @@ public class OhMyVanillaMinecraft implements ModInitializer {
 		}
 
 		LOGGER.info("Configuration: \n==========\n" + configuration + "\n==========");
+
+		CommandRegistrationCallback.EVENT.register(new CommandRegistrationCallback() {
+			@Override
+			public void register(CommandDispatcher<ServerCommandSource> commandDispatcher, boolean b) {
+				commandDispatcher.register(CommandManager.literal("omvm").executes(new Command<ServerCommandSource>() {
+					@Override
+					public int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
+						String text = "OhMyVanillaMinecraft\n==========\n" + getConfiguration() + "\n==========";
+						context.getSource().sendFeedback(new LiteralText(text), false);
+						return 1; // 1: success, -1: fail
+					}
+				}));
+			}
+		});
 
 	}
 }
