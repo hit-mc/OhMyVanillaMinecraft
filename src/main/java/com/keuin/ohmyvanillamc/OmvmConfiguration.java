@@ -11,11 +11,7 @@ public class OmvmConfiguration {
     private final boolean reintroduceLlamaItemDuplicating;
 
     public OmvmConfiguration() {
-        fixEntityTrackerEntrySpamming = true;
-        disableFishSchooling = false;
-        disablePhantomSpawning = false;
-        disableWanderingTraderSpawning = false;
-        reintroduceLlamaItemDuplicating = false;
+        this(true, false, false, false, false);
     }
 
     public OmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating) {
