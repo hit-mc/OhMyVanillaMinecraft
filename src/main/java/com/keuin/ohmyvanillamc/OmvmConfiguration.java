@@ -9,17 +9,19 @@ public class OmvmConfiguration {
     private final boolean disablePhantomSpawning;
     private final boolean disableWanderingTraderSpawning;
     private final boolean reintroduceLlamaItemDuplicating;
+    private final boolean reintroduceZeroTickFarm;
 
     public OmvmConfiguration() {
-        this(true, false, false, false, false);
+        this(true, false, false, false, false, false);
     }
 
-    public OmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating) {
+    public OmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating, boolean reintroduceZeroTickFarm) {
         this.fixEntityTrackerEntrySpamming = fixEntityTrackerEntrySpamming;
         this.disableFishSchooling = disableFishSchooling;
         this.disablePhantomSpawning = disablePhantomSpawning;
         this.disableWanderingTraderSpawning = disableWanderingTraderSpawning;
         this.reintroduceLlamaItemDuplicating = reintroduceLlamaItemDuplicating;
+        this.reintroduceZeroTickFarm = reintroduceZeroTickFarm;
     }
 
     public boolean isFixEntityTrackerEntrySpamming() {
@@ -42,6 +44,10 @@ public class OmvmConfiguration {
         return reintroduceLlamaItemDuplicating;
     }
 
+    public boolean isReintroduceZeroTickFarm() {
+        return reintroduceZeroTickFarm;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,12 +57,13 @@ public class OmvmConfiguration {
                 disableFishSchooling == that.disableFishSchooling &&
                 disablePhantomSpawning == that.disablePhantomSpawning &&
                 disableWanderingTraderSpawning == that.disableWanderingTraderSpawning &&
-                reintroduceLlamaItemDuplicating == that.reintroduceLlamaItemDuplicating;
+                reintroduceLlamaItemDuplicating == that.reintroduceLlamaItemDuplicating &&
+                reintroduceZeroTickFarm == that.reintroduceZeroTickFarm;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(fixEntityTrackerEntrySpamming, disableFishSchooling, disablePhantomSpawning, disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating);
+        return Objects.hash(fixEntityTrackerEntrySpamming, disableFishSchooling, disablePhantomSpawning, disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating, reintroduceZeroTickFarm);
     }
 
     @Override
@@ -66,7 +73,8 @@ public class OmvmConfiguration {
         s += "(Optimization) Disable Fish Schooling: " + disableFishSchooling + "\n";
         s += "(Exotic Feature) Disable Phantom Spawning: " + disablePhantomSpawning + "\n";
         s += "(Exotic Feature) Disable Wandering Trader Spawning: " + disableWanderingTraderSpawning + "\n";
-        s += "(Obsolete Vanilla Feature) Reintroduce Llama Item Duplicating: " + reintroduceLlamaItemDuplicating;
+        s += "(Obsolete Vanilla Feature) Reintroduce Llama Item Duplicating: " + reintroduceLlamaItemDuplicating + "\n";
+        s += "(Obsolete Vanilla Feature) Reintroduce 0-tick Plants Farm: " + reintroduceZeroTickFarm;
         return s;
     }
 }

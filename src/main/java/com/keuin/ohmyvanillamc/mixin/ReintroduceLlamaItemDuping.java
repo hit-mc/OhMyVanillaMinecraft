@@ -22,6 +22,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Reintroduce MC-161754 glitch
+ */
 @Mixin(PlayerManager.class)
 public abstract class ReintroduceLlamaItemDuping {
 
