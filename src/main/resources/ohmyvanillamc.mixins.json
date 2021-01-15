@@ -9,7 +9,8 @@
     "DisablePhantomSpawning",
     "DisableWanderingTraderSpawning",
     "ReintroduceLlamaItemDuping",
-    "Mc113809SugarCaneBlockMixin"
+    "Mc113809SugarCaneBlockMixin",
+    "Mc113809CactusBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -36,7 +36,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
             scheduledTick(state, world, pos, random);
-        } else if (world.isAir(pos.up())) {
+        } else if (world.isAir(pos.up())) { // here goes 1.16.4 version randomTick impl.
             int i;
             for (i = 1; world.getBlockState(pos.down(i)).isOf((SugarCaneBlock) (Object) this); ++i) {
             }
