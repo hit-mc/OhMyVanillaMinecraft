@@ -37,19 +37,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
         if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
             scheduledTick(state, world, pos, random);
         } else if (world.isAir(pos.up())) { // here goes 1.16.4 version randomTick impl.
-            int i;
-            for (i = 1; world.getBlockState(pos.down(i)).isOf((SugarCaneBlock) (Object) this); ++i) {
-            }
-
-            if (i < 3) {
-                int j = state.get(AGE);
-                if (j == 15) {
-                    world.setBlockState(pos.up(), this.getDefaultState());
-                    world.setBlockState(pos, state.with(AGE, 0), 4);
-                } else {
-                    world.setBlockState(pos, state.with(AGE, j + 1), 4);
-                }
-            }
+            realGrow(state, world, pos);
         }
 
     }
@@ -65,18 +53,22 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
         } else if (world.isAir(pos.up()) && OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
-            int i;
-            for (i = 1; world.getBlockState(pos.down(i)).isOf((SugarCaneBlock) (Object) this); ++i) {
-            }
+            realGrow(state, world, pos);
+        }
+    }
 
-            if (i < 3) {
-                int j = state.get(AGE);
-                if (j == 15) {
-                    world.setBlockState(pos.up(), this.getDefaultState());
-                    world.setBlockState(pos, state.with(AGE, 0), 4);
-                } else {
-                    world.setBlockState(pos, state.with(AGE, j + 1), 4);
-                }
+    private void realGrow(BlockState state, ServerWorld world, BlockPos pos) {
+        int i;
+        for (i = 1; world.getBlockState(pos.down(i)).isOf((SugarCaneBlock) (Object) this); ++i) {
+        }
+
+        if (i < 3) {
+            int j = state.get(AGE);
+            if (j == 15) {
+                world.setBlockState(pos.up(), this.getDefaultState());
+                world.setBlockState(pos, state.with(AGE, 0), 4);
+            } else {
+                world.setBlockState(pos, state.with(AGE, j + 1), 4);
             }
         }
     }

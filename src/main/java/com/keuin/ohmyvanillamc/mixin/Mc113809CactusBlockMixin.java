@@ -38,25 +38,7 @@ public abstract class Mc113809CactusBlockMixin extends Block {
             scheduledTick(state, world, pos, random);
         } else {
             // here goes 1.16.4 version randomTick impl.
-            BlockPos blockPos = pos.up();
-            if (world.isAir(blockPos)) {
-                int i;
-                for (i = 1; world.getBlockState(pos.down(i)).isOf(this); ++i) {
-                }
-
-                if (i < 3) {
-                    int j = (Integer) state.get(AGE);
-                    if (j == 15) {
-                        world.setBlockState(blockPos, this.getDefaultState());
-                        BlockState blockState = (BlockState) state.with(AGE, 0);
-                        world.setBlockState(pos, blockState, 4);
-                        blockState.neighborUpdate(world, blockPos, this, pos, false);
-                    } else {
-                        world.setBlockState(pos, (BlockState) state.with(AGE, j + 1), 4);
-                    }
-
-                }
-            }
+            realGrow(state, world, pos);
         }
     }
 
@@ -71,24 +53,28 @@ public abstract class Mc113809CactusBlockMixin extends Block {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
         } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
-            BlockPos blockPos = pos.up();
-            if (world.isAir(blockPos)) {
-                int i;
-                for (i = 1; world.getBlockState(pos.down(i)).isOf(this); ++i) {
+            realGrow(state, world, pos);
+        }
+    }
+
+    private void realGrow(BlockState state, ServerWorld world, BlockPos pos) {
+        BlockPos blockPos = pos.up();
+        if (world.isAir(blockPos)) {
+            int i;
+            for (i = 1; world.getBlockState(pos.down(i)).isOf(this); ++i) {
+            }
+
+            if (i < 3) {
+                int j = state.get(AGE);
+                if (j == 15) {
+                    world.setBlockState(blockPos, this.getDefaultState());
+                    BlockState blockState = state.with(AGE, 0);
+                    world.setBlockState(pos, blockState, 4);
+                    blockState.neighborUpdate(world, blockPos, this, pos, false);
+                } else {
+                    world.setBlockState(pos, state.with(AGE, j + 1), 4);
                 }
 
-                if (i < 3) {
-                    int j = (Integer) state.get(AGE);
-                    if (j == 15) {
-                        world.setBlockState(blockPos, this.getDefaultState());
-                        BlockState blockState = (BlockState) state.with(AGE, 0);
-                        world.setBlockState(pos, blockState, 4);
-                        blockState.neighborUpdate(world, blockPos, this, pos, false);
-                    } else {
-                        world.setBlockState(pos, (BlockState) state.with(AGE, j + 1), 4);
-                    }
-
-                }
             }
         }
     }
