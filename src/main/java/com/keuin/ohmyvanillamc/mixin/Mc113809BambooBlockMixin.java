@@ -34,21 +34,6 @@ public abstract class Mc113809BambooBlockMixin extends Block {
     protected abstract void updateLeaves(BlockState state, World world, BlockPos pos, Random random, int height);
 
     /**
-     * Reintroduce the MC-113809 glitch for bamboo. The implementation is identical to Minecraft 1.15.2.
-     *
-     * @author trueKeuin
-     * @reason reintroduce MC-113809 for bamboo.
-     */
-    @Overwrite
-    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (!state.canPlaceAt(world, pos)) {
-            world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
-            realGrow(state, world, pos, random);
-        }
-    }
-
-    /**
      * Reintroduce the base class's implementation.
      *
      * @reason reintroduce base class's implementation.
@@ -72,6 +57,21 @@ public abstract class Mc113809BambooBlockMixin extends Block {
         if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
             scheduledTick(state, world, pos, random);
         } else {
+            realGrow(state, world, pos, random);
+        }
+    }
+
+    /**
+     * Reintroduce the MC-113809 glitch for bamboo. The implementation is identical to Minecraft 1.15.2.
+     *
+     * @author trueKeuin
+     * @reason reintroduce MC-113809 for bamboo.
+     */
+    @Overwrite
+    public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
+        if (!state.canPlaceAt(world, pos)) {
+            world.breakBlock(pos, true);
+        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
             realGrow(state, world, pos, random);
         }
     }

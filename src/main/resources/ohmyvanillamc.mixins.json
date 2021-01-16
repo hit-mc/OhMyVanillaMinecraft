@@ -12,6 +12,7 @@
     "Mc113809SugarCaneBlockMixin",
     "Mc113809CactusBlockMixin",
     "Mc113809ChorusFlowerBlockMixin",
+    "Mc113809BambooBlockMixin",
     "Mc113809AbstractPlantStemBlockMixin"
   ],
   "injectors": {
