@@ -11,7 +11,8 @@
     "ReintroduceLlamaItemDuping",
     "Mc113809SugarCaneBlockMixin",
     "Mc113809CactusBlockMixin",
-    "Mc113809ChorusFlowerBlockMixin"
+    "Mc113809ChorusFlowerBlockMixin",
+    "Mc113809AbstractPlantStemBlockMixin"
   ],
   "injectors": {
     "defaultRequire": 1
