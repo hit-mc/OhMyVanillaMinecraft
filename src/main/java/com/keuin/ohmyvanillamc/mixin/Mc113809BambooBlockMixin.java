@@ -74,7 +74,6 @@ public abstract class Mc113809BambooBlockMixin extends Block {
         } else {
             realGrow(state, world, pos, random);
         }
-
     }
 
     private void realGrow(BlockState state, ServerWorld world, BlockPos pos, Random random) {

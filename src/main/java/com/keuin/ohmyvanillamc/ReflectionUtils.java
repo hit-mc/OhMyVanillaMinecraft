@@ -3,9 +3,10 @@ package com.keuin.ohmyvanillamc;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
 /**
- * @Author 落叶飞翔的蜗牛
+ * @Author 落叶飞翔的蜗牛 Keuin
  * @Date 2018/3/10
  * @Description 常用反射函数
  */
@@ -13,10 +14,6 @@ public final class ReflectionUtils {
 
     /**
      * 获取私有成员变量的值
-     *
-     * @param instance
-     * @param filedName
-     * @return
      */
     public static Object getPrivateField(Object instance, String filedName) throws NoSuchFieldException, IllegalAccessException {
         Field field = instance.getClass().getDeclaredField(filedName);
@@ -26,12 +23,6 @@ public final class ReflectionUtils {
 
     /**
      * 设置私有成员的值
-     *
-     * @param instance
-     * @param fieldName
-     * @param value
-     * @throws NoSuchFieldException
-     * @throws IllegalAccessException
      */
     public static void setPrivateField(Object instance, String fieldName, Object value) throws NoSuchFieldException, IllegalAccessException {
         Field field = instance.getClass().getDeclaredField(fieldName);
@@ -41,19 +32,20 @@ public final class ReflectionUtils {
 
     /**
      * 访问私有方法
-     *
-     * @param instance
-     * @param methodName
-     * @param classes
-     * @param args
-     * @return
-     * @throws NoSuchMethodException
-     * @throws InvocationTargetException
-     * @throws IllegalAccessException
      */
     public static Object invokePrivateMethod(Object instance, String methodName, Class[] classes, Object... args) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
         Method method = instance.getClass().getDeclaredMethod(methodName, classes);
         method.setAccessible(true);
         return method.invoke(instance, args);
+    }
+
+    /**
+     * 获取所有成员变量的名字
+     *
+     * @param o 要获取成员变量的对象实例
+     * @return 所有成员变量名字数组
+     */
+    public static String[] getFieldName(Object o) {
+        return Arrays.stream(o.getClass().getDeclaredFields()).map(Field::getName).toArray(String[]::new);
     }
 }

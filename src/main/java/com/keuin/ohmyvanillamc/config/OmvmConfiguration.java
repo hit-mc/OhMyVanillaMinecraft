@@ -1,18 +1,27 @@
-package com.keuin.ohmyvanillamc;
+package com.keuin.ohmyvanillamc.config;
 
 import java.util.Objects;
 
 public class OmvmConfiguration {
 
-    private final boolean fixEntityTrackerEntrySpamming;
-    private final boolean disableFishSchooling;
-    private final boolean disablePhantomSpawning;
-    private final boolean disableWanderingTraderSpawning;
-    private final boolean reintroduceLlamaItemDuplicating;
-    private final boolean reintroduceZeroTickFarm;
+    private boolean fixEntityTrackerEntrySpamming;
+    private boolean disableFishSchooling;
+    private boolean disablePhantomSpawning;
+    private boolean disableWanderingTraderSpawning;
+    private boolean reintroduceLlamaItemDuplicating;
+    private boolean reintroduceZeroTickFarm;
 
     public OmvmConfiguration() {
         this(true, false, false, false, false, false);
+    }
+
+    public OmvmConfiguration(OmvmConfiguration omvmConfiguration) {
+        this.fixEntityTrackerEntrySpamming = omvmConfiguration.fixEntityTrackerEntrySpamming;
+        this.disableFishSchooling = omvmConfiguration.disableFishSchooling;
+        this.disablePhantomSpawning = omvmConfiguration.disablePhantomSpawning;
+        this.disableWanderingTraderSpawning = omvmConfiguration.disableWanderingTraderSpawning;
+        this.reintroduceLlamaItemDuplicating = omvmConfiguration.reintroduceLlamaItemDuplicating;
+        this.reintroduceZeroTickFarm = omvmConfiguration.reintroduceZeroTickFarm;
     }
 
     public OmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating, boolean reintroduceZeroTickFarm) {
@@ -46,6 +55,30 @@ public class OmvmConfiguration {
 
     public boolean isReintroduceZeroTickFarm() {
         return reintroduceZeroTickFarm;
+    }
+
+    public void setFixEntityTrackerEntrySpamming(boolean fixEntityTrackerEntrySpamming) {
+        this.fixEntityTrackerEntrySpamming = fixEntityTrackerEntrySpamming;
+    }
+
+    public void setDisableFishSchooling(boolean disableFishSchooling) {
+        this.disableFishSchooling = disableFishSchooling;
+    }
+
+    public void setDisablePhantomSpawning(boolean disablePhantomSpawning) {
+        this.disablePhantomSpawning = disablePhantomSpawning;
+    }
+
+    public void setDisableWanderingTraderSpawning(boolean disableWanderingTraderSpawning) {
+        this.disableWanderingTraderSpawning = disableWanderingTraderSpawning;
+    }
+
+    public void setReintroduceLlamaItemDuplicating(boolean reintroduceLlamaItemDuplicating) {
+        this.reintroduceLlamaItemDuplicating = reintroduceLlamaItemDuplicating;
+    }
+
+    public void setReintroduceZeroTickFarm(boolean reintroduceZeroTickFarm) {
+        this.reintroduceZeroTickFarm = reintroduceZeroTickFarm;
     }
 
     @Override
