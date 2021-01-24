@@ -85,7 +85,7 @@ public class OhMyVanillaMinecraft implements ModInitializer {
             configuration = new OmvmConfiguration(defaultConfiguration);
         }
 
-        LOGGER.info("Configuration: \n==========\n" + configuration + "\n==========");
+        LOGGER.info(getConfigurationString());
 
         CommandRegistrationCallback.EVENT.register(new CommandRegistrationCallback() {
             @Override
@@ -93,7 +93,7 @@ public class OhMyVanillaMinecraft implements ModInitializer {
                 commandDispatcher.register(CommandManager.literal("omvm").executes(new Command<ServerCommandSource>() {
                     @Override
                     public int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
-                        String text = "OhMyVanillaMinecraft\n==========\n" + getConfiguration() + "\n==========";
+                        String text = getConfigurationString();
                         context.getSource().sendFeedback(new LiteralText(text), false);
                         return 1; // 1: success, -1: fail
                     }
@@ -131,6 +131,8 @@ public class OhMyVanillaMinecraft implements ModInitializer {
                                                             @Override
                                                             public int run(CommandContext<ServerCommandSource> context) throws CommandSyntaxException {
                                                                 try {
+                                                                    boolean previousFixSpamming = configuration.isFixEntityTrackerEntrySpamming();
+
                                                                     String key = context.getArgument("key", String.class);
                                                                     String value = context.getArgument("value", String.class);
 
@@ -167,6 +169,12 @@ public class OhMyVanillaMinecraft implements ModInitializer {
             }
         });
 
+    }
+
+
+    private String getConfigurationString() {
+        return "OhMyVanillaMinecraft\n==========\n" + configuration + "\n==========\n"
+                + "Force enabled tweaks:\n" + "Furnace fuel list lag fix\n" + "==========";
     }
 
 
