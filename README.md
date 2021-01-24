@@ -11,7 +11,7 @@ What's wrong with my Minecraft?
 
 ## Bold optimizations for vanilla survival
 
-- Remove AI of laggy schooling fish (tropical fish, cod)
+- **(Optional)** Remove AI of laggy schooling fish (tropical fish, cod)
 
 ## Obsolete controversial vanilla features (glitches) reintroduction
 
