@@ -13,7 +13,8 @@
     "Mc113809CactusBlockMixin",
     "Mc113809ChorusFlowerBlockMixin",
     "Mc113809BambooBlockMixin",
-    "Mc113809AbstractPlantStemBlockMixin"
+    "Mc113809AbstractPlantStemBlockMixin",
+    "AbstractFurnaceBlockEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1
