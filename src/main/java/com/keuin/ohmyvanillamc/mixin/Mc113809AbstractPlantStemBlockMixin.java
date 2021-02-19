@@ -53,7 +53,7 @@ public abstract class Mc113809AbstractPlantStemBlockMixin extends AbstractPlantP
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableStemForceRipening()) {
             realGrow(state, world, pos, random);
         }
     }
@@ -67,7 +67,7 @@ public abstract class Mc113809AbstractPlantStemBlockMixin extends AbstractPlantP
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableStemForceRipening()) {
             scheduledTick(state, world, pos, random);
         } else {
             realGrow(state, world, pos, random);

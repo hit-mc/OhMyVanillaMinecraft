@@ -16,7 +16,7 @@ What's wrong with my Minecraft?
 ## Obsolete controversial vanilla features (glitches) reintroduction
 
 - **(Optional)** Llama item duping reintroduction
-- **(Optional)** 0-tick farm reintroduction
+- **(Optional)** 0-tick farm reintroduction (all plants have their own sub switches)
 
 ## Vanilla feature switches (some of them have been introduced by Mojang)
 

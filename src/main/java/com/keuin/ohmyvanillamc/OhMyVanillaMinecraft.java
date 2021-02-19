@@ -36,7 +36,7 @@ public class OhMyVanillaMinecraft implements ModInitializer {
     private static final Logger LOGGER = Logger.getLogger("OhMyVanillaMinecraft");
 
     private static final OmvmConfiguration defaultConfiguration =
-            new ImmutableOmvmConfiguration(true, true, true, true, true, true);
+            new ImmutableOmvmConfiguration();
     private static OmvmConfiguration configuration = null;
 
     public static OmvmConfiguration getConfiguration() {

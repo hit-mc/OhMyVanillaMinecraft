@@ -34,7 +34,7 @@ public abstract class Mc113809CactusBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableCactusForceRipening()) {
             scheduledTick(state, world, pos, random);
         } else {
             // here goes 1.16.4 version randomTick impl.
@@ -52,7 +52,7 @@ public abstract class Mc113809CactusBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableCactusForceRipening()) {
             realGrow(state, world, pos);
         }
     }

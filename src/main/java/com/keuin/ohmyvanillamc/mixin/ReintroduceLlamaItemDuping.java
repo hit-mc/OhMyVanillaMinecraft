@@ -100,6 +100,6 @@ public abstract class ReintroduceLlamaItemDuping {
             this.advancementTrackers.remove(uUID);
         }
 
-        this.sendToAll(new PlayerListS2CPacket(PlayerListS2CPacket.Action.REMOVE_PLAYER, new ServerPlayerEntity[]{player}));
+        this.sendToAll(new PlayerListS2CPacket(PlayerListS2CPacket.Action.REMOVE_PLAYER, player));
     }
 }

@@ -34,7 +34,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableSugarCaneForceRipening()) {
             scheduledTick(state, world, pos, random);
         } else if (world.isAir(pos.up())) { // here goes 1.16.4 version randomTick impl.
             realGrow(state, world, pos);
@@ -52,7 +52,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (world.isAir(pos.up()) && OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        } else if (world.isAir(pos.up()) && OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableSugarCaneForceRipening()) {
             realGrow(state, world, pos);
         }
     }

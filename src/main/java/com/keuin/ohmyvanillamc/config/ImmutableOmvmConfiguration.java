@@ -3,14 +3,23 @@ package com.keuin.ohmyvanillamc.config;
 public class ImmutableOmvmConfiguration extends OmvmConfiguration {
 
     public ImmutableOmvmConfiguration() {
+        super();
     }
 
     public ImmutableOmvmConfiguration(OmvmConfiguration omvmConfiguration) {
         super(omvmConfiguration);
     }
 
-    public ImmutableOmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling, boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning, boolean reintroduceLlamaItemDuplicating, boolean reintroduceZeroTickFarm) {
-        super(fixEntityTrackerEntrySpamming, disableFishSchooling, disablePhantomSpawning, disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating, reintroduceZeroTickFarm);
+    public ImmutableOmvmConfiguration(boolean fixEntityTrackerEntrySpamming, boolean disableFishSchooling,
+                                      boolean disablePhantomSpawning, boolean disableWanderingTraderSpawning,
+                                      boolean reintroduceLlamaItemDuplicating, boolean reintroduceZeroTickFarm,
+                                      boolean enableStemForceRipening, boolean enableBambooForceRipening,
+                                      boolean enableCactusForceRipening, boolean enableChorusFlowerForceRipening,
+                                      boolean enableSugarCaneForceRipening) {
+        super(fixEntityTrackerEntrySpamming, disableFishSchooling, disablePhantomSpawning,
+                disableWanderingTraderSpawning, reintroduceLlamaItemDuplicating, reintroduceZeroTickFarm,
+                enableStemForceRipening, enableBambooForceRipening, enableCactusForceRipening,
+                enableChorusFlowerForceRipening, enableSugarCaneForceRipening);
     }
 
     @Override

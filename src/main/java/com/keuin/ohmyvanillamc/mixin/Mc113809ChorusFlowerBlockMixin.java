@@ -56,7 +56,7 @@ public abstract class Mc113809ChorusFlowerBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableChorusFlowerForceRipening()) {
             realGrow(state, world, pos, random);
         }
 
@@ -70,7 +70,7 @@ public abstract class Mc113809ChorusFlowerBlockMixin extends Block {
      */
     @Overwrite
     public boolean hasRandomTicks(BlockState state) {
-        boolean zf = OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm();
+        boolean zf = OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableChorusFlowerForceRipening();
         return ((state.get(AGE) < 5) && !zf) || (randomTicks && zf);
     }
 
@@ -83,7 +83,7 @@ public abstract class Mc113809ChorusFlowerBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm()) {
+        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableChorusFlowerForceRipening()) {
             scheduledTick(state, world, pos, random);
         } else {
             realGrow(state, world, pos, random);
