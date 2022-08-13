@@ -6,7 +6,6 @@ What's wrong with my Minecraft?
 
 ## Bug fixes for vanilla Minecraft
 
-- **(Force Enabled)** Boost up furnaces' performance, reduce MSPT when many furnaces are working
 - **(Force Enabled)** Fix entity tracker spamming like `Fetching packet for removed entity ...`
 
 ## Bold optimizations for vanilla survival
