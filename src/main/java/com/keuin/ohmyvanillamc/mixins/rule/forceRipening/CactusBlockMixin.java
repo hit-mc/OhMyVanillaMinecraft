@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.forceRipening;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CactusBlock;
@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Random;
 
 @Mixin(CactusBlock.class)
-public abstract class Mc113809CactusBlockMixin extends Block {
+public abstract class CactusBlockMixin extends Block {
 
-    public Mc113809CactusBlockMixin(Settings settings) {
+    public CactusBlockMixin(Settings settings) {
         super(settings);
     }
 
@@ -34,7 +34,7 @@ public abstract class Mc113809CactusBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableCactusForceRipening()) {
+        if (OmvmSettings.enableCactusForceRipening) {
             scheduledTick(state, world, pos, random);
         } else {
             // here goes 1.16.4 version randomTick impl.
@@ -52,7 +52,7 @@ public abstract class Mc113809CactusBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableCactusForceRipening()) {
+        } else if (OmvmSettings.enableCactusForceRipening) {
             realGrow(state, world, pos);
         }
     }

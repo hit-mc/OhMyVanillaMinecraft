@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.forceRipening;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.block.BambooBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,9 +17,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Random;
 
 @Mixin(BambooBlock.class)
-public abstract class Mc113809BambooBlockMixin extends Block {
+public abstract class BambooBlockMixin extends Block {
 
-    public Mc113809BambooBlockMixin(Settings settings) {
+    public BambooBlockMixin(Settings settings) {
         super(settings);
     }
 
@@ -41,7 +41,7 @@ public abstract class Mc113809BambooBlockMixin extends Block {
      */
     @Overwrite
     public boolean hasRandomTicks(BlockState state) {
-        boolean zf = OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableBambooForceRipening();
+        boolean zf = OmvmSettings.enableBambooForceRipening;
         return ((state.get(STAGE) == 0) && !zf) || (randomTicks && zf);
     }
 
@@ -54,7 +54,7 @@ public abstract class Mc113809BambooBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableBambooForceRipening()) {
+        if (OmvmSettings.enableBambooForceRipening) {
             scheduledTick(state, world, pos, random);
         } else {
             realGrow(state, world, pos, random);
@@ -71,7 +71,7 @@ public abstract class Mc113809BambooBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableBambooForceRipening()) {
+        } else if (OmvmSettings.enableBambooForceRipening) {
             realGrow(state, world, pos, random);
         }
     }

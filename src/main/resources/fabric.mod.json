@@ -5,11 +5,12 @@
   "name": "Oh My Vanilla Minecraft",
   "description": "What's wrong with my Minecraft?",
   "authors": [
-    "trueKeuin"
+    "trueKeuin",
+    "Merrg1n"
   ],
   "contact": {
     "homepage": "https://www.keuin.cc",
-    "sources": "https://github.com/keuin/OhMyVanillaMinecraft"
+    "sources": "https://github.com/hit-mc/OhMyVanillaMinecraft"
   },
   "license": "MIT",
   "icon": "assets/ohmyvanillamc/icon.png",
@@ -25,7 +26,8 @@
   "depends": {
     "fabricloader": ">=0.7.4",
     "fabric": "*",
-    "minecraft": "1.16.x"
+    "minecraft": "1.16.x",
+    "carpet": "*"
   },
   "suggests": {
     "another-mod": "*"

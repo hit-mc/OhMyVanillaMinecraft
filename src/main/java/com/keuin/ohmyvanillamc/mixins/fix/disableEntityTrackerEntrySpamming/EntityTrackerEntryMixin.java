@@ -1,4 +1,4 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.fix.disableEntityTrackerEntrySpamming;
 
 import com.keuin.ohmyvanillamc.DummyLogger;
 import net.minecraft.server.network.EntityTrackerEntry;
@@ -9,12 +9,10 @@ import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
 @Mixin(EntityTrackerEntry.class)
-public class DisableEntityTrackerEntrySpamming {
-
-    private static final Logger LOGGER_DUMMY = new DummyLogger();
+public class EntityTrackerEntryMixin {
 
     static {
-        setLOGGER(LOGGER_DUMMY);
+        setLOGGER(new DummyLogger());
     }
 
     @Shadow

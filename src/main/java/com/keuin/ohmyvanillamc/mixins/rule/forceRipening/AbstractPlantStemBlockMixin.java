@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.forceRipening;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.block.AbstractPlantPartBlock;
 import net.minecraft.block.AbstractPlantStemBlock;
 import net.minecraft.block.BlockState;
@@ -17,9 +17,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Random;
 
 @Mixin(AbstractPlantStemBlock.class)
-public abstract class Mc113809AbstractPlantStemBlockMixin extends AbstractPlantPartBlock {
+public abstract class AbstractPlantStemBlockMixin extends AbstractPlantPartBlock {
 
-    protected Mc113809AbstractPlantStemBlockMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater) {
+    protected AbstractPlantStemBlockMixin(Settings settings, Direction growthDirection, VoxelShape outlineShape, boolean tickWater) {
         super(settings, growthDirection, outlineShape, tickWater);
     }
 
@@ -47,13 +47,13 @@ public abstract class Mc113809AbstractPlantStemBlockMixin extends AbstractPlantP
      * Reintroduce the MC-113809 glitch for kelp, twisted vine and weeping vine. The implementation is identical to Minecraft 1.15.2.
      *
      * @author trueKeuin
-     * @reason reintroduce MC-113809 for bamboo.
+     * @reason reintroduce MC-113809 for kelp, twisted vine and weeping vine.
      */
     @Override
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableStemForceRipening()) {
+        } else if (OmvmSettings.enableStemForceRipening) {
             realGrow(state, world, pos, random);
         }
     }
@@ -67,7 +67,7 @@ public abstract class Mc113809AbstractPlantStemBlockMixin extends AbstractPlantP
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableStemForceRipening()) {
+        if (OmvmSettings.enableStemForceRipening) {
             scheduledTick(state, world, pos, random);
         } else {
             realGrow(state, world, pos, random);

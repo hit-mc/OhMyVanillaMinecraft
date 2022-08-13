@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.reintroduceLlamaItemDuping;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.advancement.PlayerAdvancementTracker;
 import net.minecraft.entity.Entity;
 import net.minecraft.network.Packet;
@@ -26,7 +26,7 @@ import java.util.UUID;
  * Reintroduce MC-161754 glitch
  */
 @Mixin(PlayerManager.class)
-public abstract class ReintroduceLlamaItemDuping {
+public abstract class PlayerManagerMixin {
 
     @Shadow
     protected abstract void savePlayerData(ServerPlayerEntity player);
@@ -74,11 +74,11 @@ public abstract class ReintroduceLlamaItemDuping {
                 player.stopRiding();
                 serverWorld.removeEntity(entity);
                 // entity.removed = true
-                entity.removed = !OhMyVanillaMinecraft.getConfiguration().isReintroduceLlamaItemDuplicating() || entity.removed;
+                entity.removed = !OmvmSettings.reintroduceLlamaItemDuplicating || entity.removed;
 
                 Entity entity2;
                 for (Iterator var4 = entity.getPassengersDeep().iterator(); var4.hasNext(); // entity2.removed = true
-                     entity2.removed = !OhMyVanillaMinecraft.getConfiguration().isReintroduceLlamaItemDuplicating() || entity2.removed) {
+                     entity2.removed = !OmvmSettings.reintroduceLlamaItemDuplicating || entity2.removed) {
                     entity2 = (Entity) var4.next();
                     serverWorld.removeEntity(entity2);
                 }

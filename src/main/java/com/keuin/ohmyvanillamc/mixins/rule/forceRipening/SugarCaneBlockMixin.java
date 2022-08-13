@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.forceRipening;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.SugarCaneBlock;
@@ -15,9 +15,9 @@ import org.spongepowered.asm.mixin.Shadow;
 import java.util.Random;
 
 @Mixin(SugarCaneBlock.class)
-public abstract class Mc113809SugarCaneBlockMixin extends Block {
+public abstract class SugarCaneBlockMixin extends Block {
 
-    public Mc113809SugarCaneBlockMixin(Settings settings) {
+    public SugarCaneBlockMixin(Settings settings) {
         super(settings);
     }
 
@@ -34,7 +34,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
      */
     @Overwrite
     public void randomTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
-        if (OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableSugarCaneForceRipening()) {
+        if (OmvmSettings.enableSugarCaneForceRipening) {
             scheduledTick(state, world, pos, random);
         } else if (world.isAir(pos.up())) { // here goes 1.16.4 version randomTick impl.
             realGrow(state, world, pos);
@@ -52,7 +52,7 @@ public abstract class Mc113809SugarCaneBlockMixin extends Block {
     public void scheduledTick(BlockState state, ServerWorld world, BlockPos pos, Random random) {
         if (!state.canPlaceAt(world, pos)) {
             world.breakBlock(pos, true);
-        } else if (world.isAir(pos.up()) && OhMyVanillaMinecraft.getConfiguration().isReintroduceZeroTickFarm() && OhMyVanillaMinecraft.getConfiguration().isEnableSugarCaneForceRipening()) {
+        } else if (world.isAir(pos.up()) && OmvmSettings.enableSugarCaneForceRipening) {
             realGrow(state, world, pos);
         }
     }

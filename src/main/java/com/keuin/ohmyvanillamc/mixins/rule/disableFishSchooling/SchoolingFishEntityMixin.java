@@ -1,6 +1,6 @@
-package com.keuin.ohmyvanillamc.mixin;
+package com.keuin.ohmyvanillamc.mixins.rule.disableFishSchooling;
 
-import com.keuin.ohmyvanillamc.OhMyVanillaMinecraft;
+import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.goal.FollowGroupLeaderGoal;
 import net.minecraft.entity.passive.FishEntity;
@@ -11,14 +11,17 @@ import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(SchoolingFishEntity.class)
-public abstract class DisableFishSchooling extends FishEntity {
+public abstract class SchoolingFishEntityMixin extends FishEntity {
 
-    public DisableFishSchooling(EntityType<? extends FishEntity> type, World world) {
+    public SchoolingFishEntityMixin(EntityType<? extends FishEntity> type, World world) {
         super(type, world);
     }
 
-    @Shadow public abstract boolean hasLeader();
-    @Shadow private SchoolingFishEntity leader;
+    @Shadow
+    public abstract boolean hasLeader();
+
+    @Shadow
+    private SchoolingFishEntity leader;
 
     /**
      * @reason To disable SchoolingFish schooling.
@@ -26,7 +29,7 @@ public abstract class DisableFishSchooling extends FishEntity {
      */
     @Overwrite
     public void moveTowardLeader() {
-        if (!OhMyVanillaMinecraft.getConfiguration().isDisableFishSchooling()) {
+        if (!OmvmSettings.disableFishSchooling) {
             if (this.hasLeader()) {
                 this.getNavigation().startMovingTo(this.leader, 1.0D);
             }
@@ -40,7 +43,7 @@ public abstract class DisableFishSchooling extends FishEntity {
     @Overwrite
     public void initGoals() {
         super.initGoals();
-        if (!OhMyVanillaMinecraft.getConfiguration().isDisableFishSchooling()) {
+        if (!OmvmSettings.disableFishSchooling) {
             this.goalSelector.add(5, new FollowGroupLeaderGoal((SchoolingFishEntity) (Object) this));
         }
     }

@@ -1,17 +1,17 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "com.keuin.ohmyvanillamc.mixin",
+  "package": "com.keuin.ohmyvanillamc.mixins",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "DisableEntityTrackerEntrySpamming",
-    "DisableFishSchooling",
-    "ReintroduceLlamaItemDuping",
-    "Mc113809SugarCaneBlockMixin",
-    "Mc113809CactusBlockMixin",
-    "Mc113809ChorusFlowerBlockMixin",
-    "Mc113809BambooBlockMixin",
-    "Mc113809AbstractPlantStemBlockMixin"
+    "fix.disableEntityTrackerEntrySpamming.EntityTrackerEntryMixin",
+    "rule.disableFishSchooling.SchoolingFishEntityMixin",
+    "rule.forceRipening.AbstractPlantStemBlockMixin",
+    "rule.forceRipening.BambooBlockMixin",
+    "rule.forceRipening.CactusBlockMixin",
+    "rule.forceRipening.ChorusFlowerBlockMixin",
+    "rule.forceRipening.SugarCaneBlockMixin",
+    "rule.reintroduceLlamaItemDuping.PlayerManagerMixin"
   ],
   "injectors": {
     "defaultRequire": 1
