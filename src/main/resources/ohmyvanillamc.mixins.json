@@ -6,8 +6,6 @@
   "mixins": [
     "DisableEntityTrackerEntrySpamming",
     "DisableFishSchooling",
-    "DisablePhantomSpawning",
-    "DisableWanderingTraderSpawning",
     "ReintroduceLlamaItemDuping",
     "Mc113809SugarCaneBlockMixin",
     "Mc113809CactusBlockMixin",
