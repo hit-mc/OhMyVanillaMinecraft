@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(SchoolingFishEntity.class)
 public abstract class SchoolingFishEntityMixin extends FishEntity {
-
+    // TODO: need profile
     public SchoolingFishEntityMixin(EntityType<? extends FishEntity> type, World world) {
         super(type, world);
     }

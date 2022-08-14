@@ -6,7 +6,7 @@
   "mixins": [
     "fix.disableEntityTrackerEntrySpamming.EntityTrackerEntryMixin",
     "rule.disableFishSchooling.SchoolingFishEntityMixin",
-    "rule.forceRipening.AbstractPlantStemBlockMixin",
+    "rule.forceRipening.AbstractPlantPartBlockMixin",
     "rule.forceRipening.BambooBlockMixin",
     "rule.forceRipening.CactusBlockMixin",
     "rule.forceRipening.ChorusFlowerBlockMixin",
