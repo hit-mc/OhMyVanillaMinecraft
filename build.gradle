@@ -3,9 +3,12 @@ plugins {
 	id 'maven-publish'
 }
 
-archivesBaseName = project.archives_base_name
 version = project.mod_version + "-mc" + project.minecraft_version
 group = project.maven_group
+
+base {
+	archivesName = project.archives_base_name
+}
 
 repositories {
 	maven {
@@ -33,7 +36,7 @@ processResources {
 	inputs.property "version", project.version
 
 	filesMatching("fabric.mod.json") {
-		expand "version": project.version
+		expand "version": inputs.properties.version
 	}
 }
 
@@ -67,7 +70,7 @@ jar {
 	inputs.property "archivesName", project.base.archivesName
 
 	from("LICENSE") {
-		rename { "${it}_${project.archivesBaseName}"}
+		rename { "${it}_${inputs.properties.archivesName}"}
 	}
 }
 
