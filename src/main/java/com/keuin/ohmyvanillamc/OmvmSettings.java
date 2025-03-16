@@ -62,4 +62,10 @@ public class OmvmSettings {
             category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
     )
     public static boolean dropShulkerBoxContents = false;
+
+    @Rule(
+            desc = "Backported from 1.17, makes rails resistant to water flow.",
+            category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
+    )
+    public static boolean preventRailWaterSweeping = false;
 }
