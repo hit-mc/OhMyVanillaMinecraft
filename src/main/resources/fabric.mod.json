@@ -20,6 +20,7 @@
       "com.keuin.ohmyvanillamc.OhMyVanillaMinecraft"
     ]
   },
+  "accessWidener": "ohmyvanillamc.accesswidener",
   "mixins": [
     "ohmyvanillamc.mixins.json"
   ],

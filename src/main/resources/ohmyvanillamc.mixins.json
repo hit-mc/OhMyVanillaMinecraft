@@ -18,7 +18,8 @@
     "rule.forceRipening.ChorusFlowerBlockMixin",
     "rule.forceRipening.SugarCaneBlockMixin",
     "rule.preventRailWaterSweeping.FlowableFluidMixin",
-    "rule.reintroduceLlamaItemDuping.PlayerManagerMixin"
+    "rule.reintroduceLlamaItemDuping.PlayerManagerMixin",
+    "rule.shulkerReproduction.ShulkerEntityMixin"
   ],
   "injectors": {
     "defaultRequire": 1

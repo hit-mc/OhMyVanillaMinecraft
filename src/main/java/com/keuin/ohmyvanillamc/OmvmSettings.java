@@ -68,4 +68,16 @@ public class OmvmSettings {
             category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
     )
     public static boolean preventRailWaterSweeping = false;
+
+    @Rule(
+            desc = "Backported from 1.17, allows shulkers to spawn new shulkers when hitting each other with bullets.",
+            category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
+    )
+    public static boolean enableShulkerReproduction = false;
+
+    @Rule(
+            desc = "Fixes shulkers incorrectly trying to avoid or move away from nearby shulkers, see MC-183884.",
+            category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
+    )
+    public static boolean fixShulkerAvoidance = false;
 }
