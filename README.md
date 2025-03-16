@@ -16,3 +16,7 @@ What's wrong with my Minecraft?
 
 - **(Optional)** Llama item duping reintroduction
 - **(Optional)** 0-tick farm reintroduction (all plants have their own sub switches)
+
+## Backport vanilla features
+
+- **(Optional)** Drops specialized minecarts as single items rather than separate components

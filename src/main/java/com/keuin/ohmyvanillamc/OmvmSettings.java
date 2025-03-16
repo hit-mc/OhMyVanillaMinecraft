@@ -7,6 +7,8 @@ import static carpet.settings.RuleCategory.*;
 public class OmvmSettings {
     public static final String OMVM = "OMVM";
 
+    public static final String BACKPORT = "backport";
+
     @Rule(
             desc = "Remove AI of laggy schooling fish (tropical fish, cod)",
             category = {OMVM, FEATURE, OPTIMIZATION}
@@ -20,32 +22,38 @@ public class OmvmSettings {
     public static boolean reintroduceLlamaItemDuplicating = false;
 
     @Rule(
-            desc = "Reintroduce Force Ripening for kelp, twisted vine and weeping vine, See MC-113809",
+            desc = "Reintroduce force growth for kelp, twisted vine and weeping vine, see MC-113809",
             category = {OMVM, FEATURE, EXPERIMENTAL}
     )
     public static boolean enableStemForceRipening = false;
 
     @Rule(
-            desc = "Reintroduce Force Ripening for bamboo, See MC-113809",
+            desc = "Reintroduce force growth for bamboo, see MC-113809",
             category = {OMVM, FEATURE, EXPERIMENTAL}
     )
     public static boolean enableBambooForceRipening = false;
 
     @Rule(
-            desc = "Reintroduce Force Ripening for cactus, See MC-113809",
+            desc = "Reintroduce force growth for cactus, See MC-113809",
             category = {OMVM, FEATURE, EXPERIMENTAL}
     )
     public static boolean enableCactusForceRipening = false;
 
     @Rule(
-            desc = "Reintroduce Force Ripening for chorus flower, See MC-113809",
+            desc = "Reintroduce force growth for chorus flower, See MC-113809",
             category = {OMVM, FEATURE, EXPERIMENTAL}
     )
     public static boolean enableChorusFlowerForceRipening = false;
 
     @Rule(
-            desc = "Reintroduce Force Ripening for sugar cane, See MC-113809",
+            desc = "Reintroduce force growth for sugar cane, See MC-113809",
             category = {OMVM, FEATURE, EXPERIMENTAL}
     )
     public static boolean enableSugarCaneForceRipening = false;
+
+    @Rule(
+            desc = "Backported from 1.19, drops specialized minecarts as single items rather than separate components.",
+            category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
+    )
+    public static boolean dropMinecartAsOneItem = false;
 }
