@@ -11,11 +11,11 @@
     "rule.forceRipening.CactusBlockMixin",
     "rule.forceRipening.ChorusFlowerBlockMixin",
     "rule.forceRipening.SugarCaneBlockMixin",
-    "rule.minecartDropItem.AbstractMinecartEntityMixin",
-    "rule.minecartDropItem.ChestMinecartEntityMixin",
-    "rule.minecartDropItem.FurnaceMinecartEntityMixin",
-    "rule.minecartDropItem.HopperMinecartEntityMixin",
-    "rule.minecartDropItem.TntMinecartEntityMixin",
+    "rule.dropMinecartAsOneItem.AbstractMinecartEntityMixin",
+    "rule.dropMinecartAsOneItem.ChestMinecartEntityMixin",
+    "rule.dropMinecartAsOneItem.FurnaceMinecartEntityMixin",
+    "rule.dropMinecartAsOneItem.HopperMinecartEntityMixin",
+    "rule.dropMinecartAsOneItem.TntMinecartEntityMixin",
     "rule.reintroduceLlamaItemDuping.PlayerManagerMixin"
   ],
   "injectors": {

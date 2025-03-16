@@ -1,15 +1,15 @@
-package com.keuin.ohmyvanillamc.mixins.rule.minecartDropItem;
+package com.keuin.ohmyvanillamc.mixins.rule.dropMinecartAsOneItem;
 
 import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.entity.damage.DamageSource;
-import net.minecraft.entity.vehicle.TntMinecartEntity;
+import net.minecraft.entity.vehicle.FurnaceMinecartEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(TntMinecartEntity.class)
-public class TntMinecartEntityMixin {
+@Mixin(FurnaceMinecartEntity.class)
+public class FurnaceMinecartEntityMixin {
     @Inject(
             method = "dropItems",
             at = @At(

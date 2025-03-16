@@ -1,4 +1,4 @@
-package com.keuin.ohmyvanillamc.mixins.rule.minecartDropItem;
+package com.keuin.ohmyvanillamc.mixins.rule.dropMinecartAsOneItem;
 
 import com.keuin.ohmyvanillamc.OmvmSettings;
 import net.minecraft.entity.damage.DamageSource;
