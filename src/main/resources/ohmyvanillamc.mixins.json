@@ -6,16 +6,17 @@
   "mixins": [
     "fix.disableEntityTrackerEntrySpamming.EntityTrackerEntryMixin",
     "rule.disableFishSchooling.SchoolingFishEntityMixin",
-    "rule.forceRipening.AbstractPlantPartBlockMixin",
-    "rule.forceRipening.BambooBlockMixin",
-    "rule.forceRipening.CactusBlockMixin",
-    "rule.forceRipening.ChorusFlowerBlockMixin",
-    "rule.forceRipening.SugarCaneBlockMixin",
     "rule.dropMinecartAsOneItem.AbstractMinecartEntityMixin",
     "rule.dropMinecartAsOneItem.ChestMinecartEntityMixin",
     "rule.dropMinecartAsOneItem.FurnaceMinecartEntityMixin",
     "rule.dropMinecartAsOneItem.HopperMinecartEntityMixin",
     "rule.dropMinecartAsOneItem.TntMinecartEntityMixin",
+    "rule.dropShulkerBoxContents.ItemEntityMixin",
+    "rule.forceRipening.AbstractPlantPartBlockMixin",
+    "rule.forceRipening.BambooBlockMixin",
+    "rule.forceRipening.CactusBlockMixin",
+    "rule.forceRipening.ChorusFlowerBlockMixin",
+    "rule.forceRipening.SugarCaneBlockMixin",
     "rule.reintroduceLlamaItemDuping.PlayerManagerMixin"
   ],
   "injectors": {

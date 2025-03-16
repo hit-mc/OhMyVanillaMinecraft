@@ -10,6 +10,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 
 @Mixin(AbstractMinecartEntity.class)
 public class AbstractMinecartEntityMixin {
+    @SuppressWarnings("UnreachableCode")
     @ModifyArg(
             method = "dropItems",
             at = @At(

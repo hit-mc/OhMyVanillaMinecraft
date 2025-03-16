@@ -56,4 +56,10 @@ public class OmvmSettings {
             category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
     )
     public static boolean dropMinecartAsOneItem = false;
+
+    @Rule(
+            desc = "Backported from 1.17, All shulker boxes now drop their contents when destroyed as an item entity.",
+            category = {OMVM, FEATURE, EXPERIMENTAL, BACKPORT}
+    )
+    public static boolean dropShulkerBoxContents = false;
 }

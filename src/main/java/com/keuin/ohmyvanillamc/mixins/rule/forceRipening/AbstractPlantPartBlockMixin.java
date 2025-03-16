@@ -36,6 +36,7 @@ public abstract class AbstractPlantPartBlockMixin extends Block {
             ci.cancel();
     }
 
+    @SuppressWarnings("UnreachableCode")
     @Inject(
             method = "scheduledTick",
             at = @At("TAIL")
