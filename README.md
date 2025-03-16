@@ -20,3 +20,7 @@ What's wrong with my Minecraft?
 ## Backport vanilla features
 
 - **(Optional)** Drops specialized minecarts as single items rather than separate components
+- **(Optional)** All shulker boxes now drop their contents when destroyed as an item entity
+- **(Optional)** Rails can resistant to water flow
+- **(Optional)** Allows shulkers to spawn new shulkers when hitting each other with bullets
+- **(Optional)** Fixes shulkers incorrectly trying to avoid or move away from nearby shulkers (MC-183884)
