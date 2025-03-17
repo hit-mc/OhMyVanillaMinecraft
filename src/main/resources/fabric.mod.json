@@ -32,5 +32,8 @@
   },
   "suggests": {
     "another-mod": "*"
+  },
+  "conflicts": {
+    "pca": "<=0.2.5"
   }
 }

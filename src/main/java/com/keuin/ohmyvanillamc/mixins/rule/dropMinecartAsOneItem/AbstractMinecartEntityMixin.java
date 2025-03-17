@@ -1,6 +1,8 @@
 package com.keuin.ohmyvanillamc.mixins.rule.dropMinecartAsOneItem;
 
 import com.keuin.ohmyvanillamc.OmvmSettings;
+import me.fallenbreath.conditionalmixin.api.annotation.Condition;
+import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
 import net.minecraft.entity.vehicle.*;
 import net.minecraft.item.ItemConvertible;
 import net.minecraft.item.Items;
@@ -8,6 +10,12 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
 
+
+@Restriction(
+        require = {
+                @Condition(value = "carpet-tis-addition", versionPredicates = "<1.50"),
+        }
+)
 @Mixin(AbstractMinecartEntity.class)
 public class AbstractMinecartEntityMixin {
     @SuppressWarnings("UnreachableCode")

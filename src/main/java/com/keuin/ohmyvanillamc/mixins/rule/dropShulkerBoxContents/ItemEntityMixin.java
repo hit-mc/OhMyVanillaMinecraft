@@ -1,6 +1,8 @@
 package com.keuin.ohmyvanillamc.mixins.rule.dropShulkerBoxContents;
 
 import com.keuin.ohmyvanillamc.OmvmSettings;
+import me.fallenbreath.conditionalmixin.api.annotation.Condition;
+import me.fallenbreath.conditionalmixin.api.annotation.Restriction;
 import net.minecraft.block.ShulkerBoxBlock;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
@@ -15,6 +17,11 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+@Restriction(
+        require = {
+                @Condition(value = "carpet-tis-addition", versionPredicates = "<1.59"),
+        }
+)
 @Mixin(ItemEntity.class)
 public class ItemEntityMixin {
 

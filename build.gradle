@@ -11,6 +11,7 @@ base {
 }
 
 repositories {
+	maven { url 'https://maven.fallenbreath.me/releases' }
 	maven {
 		url 'https://masa.dy.fi/maven'
 	}
@@ -30,6 +31,8 @@ dependencies {
 
 	// PSA: Some older mods, compiled on Loom 0.2.1, might have outdated Maven POMs.
 	// You may need to force-disable transitiveness on them.
+	modImplementation "me.fallenbreath:conditional-mixin-fabric:${project.conditional_mixin_version}"
+	include "me.fallenbreath:conditional-mixin-fabric:${project.conditional_mixin_version}"
 }
 
 processResources {

@@ -3,6 +3,7 @@
   "minVersion": "0.8",
   "package": "com.keuin.ohmyvanillamc.mixins",
   "compatibilityLevel": "JAVA_8",
+  "plugin": "com.keuin.ohmyvanillamc.OmvmMixinConfigPlugin",
   "mixins": [
     "fix.disableEntityTrackerEntrySpamming.EntityTrackerEntryMixin",
     "rule.disableFishSchooling.SchoolingFishEntityMixin",
